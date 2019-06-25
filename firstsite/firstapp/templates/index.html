@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}index{% endblock %}
+{% block content %}
+	<div class="container">
+		<h1 style="text-align: center;color:red;margin-top:150px; ">用户画像检索</h1>
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-11 col-md-offset-2"  style="margin-top:20px;">
+				<div class="forml">
+					<form class="form-inlinel" role="form" action="../users/" method="post">
+						{% csrf_token %}
+						<div class="input-group col-md-9">
+							<input type="text" class="form-control input-lg" name="content" placeholder="搜索开发者画像（如'scrollie'）" value="">
+							<span class="input-group-addon btn btn-primary" ><button  class="btn " type="submit" >搜索</button></span>
+						</div>
+					</form>
+				</div>
+				<h5>{{error_msg}}</h5>
+           </div>
+			<div class="col-sm-0 col-md-0 col-lg-1" ></div>
+         </div>
+	</div>
+
+{% endblock %}

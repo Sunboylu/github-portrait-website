@@ -1,0 +1,465 @@
+{% extends "base.html" %}
+{% block title %}users{% endblock %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+	<script src="../static/jqcloud/jqcloud.js"></script>
+	<link href="../static/jqcloud/jqcloud.css" rel="stylesheet">
+	<script src="../static/jqcloud/jqcloud.min.js"></script>
+	<script src="https://cdn.bootcss.com/echarts/2.2.7/echarts-all.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+	<div class="row">
+        <div class="col-md-1" >
+         <div class="user_image">
+					{% for i in data.image %}
+					<img src="{{i.imgage}}" alt="{{i.login}}" class width="120" height="120">
+					{% endfor %}
+			</div>
+        </div>
+        <div class="col-md-11" style="padding-top:8px;">
+        	<div class="row">
+				 <div class="col-md-1 ">
+                <ul style="font-size: 20px;color: #999;text-align: center;">name</ul>
+                </div>
+                <div class="col-md-3 " >
+                   <ul class="name" style="font-size:20px;">
+					{% for post in data.tag_user %}
+						{{post.informations.user_name}}
+					{% endfor %}
+				</ul>
+                </div>
+				<div class="col-md-2 col-md-offset-1">
+                <ul style="font-size: 20px;color: #999;text-align: center;float:left;">综合能力</ul>
+                </div>
+				<div class="col-md-5 " style="margin-left:0px;">
+                <ul style="font-size: 20px;padding-left:0px;">
+						{% for post in data.analyze_list %}
+						{{post.score}}
+					{% endfor %}
+				</ul>
+                </div>
+			</div>
+			<div class="row">
+				 <div class="col-md-1">
+                <ul style="font-size: 20px;color: #999;text-align: center;">location</ul>
+                </div>
+             <div class="col-md-3" >
+                   <ul class="login" style="font-size:20px;">
+						{% for post in data.tag_user %}
+						{{post.informations.location}}
+					{% endfor %}
+				</ul>
+                </div>
+					<div class="col-md-2 col-md-offset-1">
+                <ul style="font-size: 20px;color: #999;text-align: center;float:left;">排名</ul>
+                </div>
+				<div class="col-md-5 " style="margin-left:0px;">
+                <ul style="font-size: 20px;padding-left:0px;">
+						{% for post in data.rank_list %}
+						{{post.score_rank}}
+					{% endfor %}
+				</ul>
+                </div>
+			</div>
+			<div class="row">
+				<div class="col-md-1">
+                <ul style="font-size: 20px;color: #999;text-align: center;">blog</ul>
+                </div>
+                 <div class="col-md-11" >
+                   <ul class="location" style="font-size:20px;">
+					{% for post in data.blog_list %}
+						<a href="	{{post.blog}}" >
+										{{post.blog}}
+								</a>
+					{% endfor %}
+				</ul>
+                </div>
+			</div>
+        </div>
+    </div>
+</div>
+<HR align=center width="80%" color=#f2f2f2 SIZE=2>
+<div class="container" style="margin-bottom:20px;">
+	<div class="row">
+        <div class="col-md-8" style="float:left;">
+
+			<div class="left">
+				<ul id="myTab" class="nav nav-tabs">
+					<li class="active">
+						<a href="#ability" data-toggle="tab">
+							 <b class="abili">开发能力</b>
+						</a>
+					</li>
+					<li><a href="#user_info" data-toggle="tab">
+						<b class="info">个人信息</b></a></li>
+					<li class="dropdown">
+						<a href="#" id="myTabDrop1" class="dropdown-toggle"
+						   data-toggle="dropdown">
+							<b class="repo_info">项目信息</b>
+						</a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+							<li><a href="#repos" tabindex="-1" data-toggle="tab"><b class="repos">项目</b></a></li>
+							<li><a href="#languages" tabindex="-1" data-toggle="tab"><b class="lang">擅长语言</b></a></li>
+						</ul>
+					</li>
+				</ul>
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade" id="user_info">
+							<li class="n1"><a class="n2">姓名：</a><b class="n3">	{% for post in data.tag_user %}
+						{{post.informations.user_name}}
+					{% endfor %}</b></li>
+							<li class="z1"><a class="z2">注册名：</a><b class="z3">{% for post in data.tag_user %}
+						{{post.user}}
+					{% endfor %}</b></li>
+							<li class="c1"><a class="c2">公司：</a><b class="c3">{% for post in data.tag_user %}
+						{{post.informations.user_company}}
+					{% endfor %}</b></li>
+							<li class="o1"><a class="o2">组织：</a><b class="o3">{% for post in data.tag_user %}
+						{%if post.informations.organization%} {{post.informations.organization}} {% else %} None {% endif%}
+					{% endfor %}</b></li>
+							<li class="t1"><a class="t2">时间：</a><b class="t3">{% for post in data.tag_user %}
+						{{post.informations.user_time}}
+					{% endfor %}(月)</b></li>
+							<li class="d1"><a class="d2">地点：</a><b class="d3">{% for post in data.tag_user %}
+								{{post.informations.location}}
+								{% endfor %}</b></li>
+							<li class="d1"><a class="d2">Github：</a>
+								{% for post in data.tag_user %}
+								<a href="https://github.com/{{post.user}}" class="d3">
+									https://github.com/{{post.user}}
+								</a>
+								{% endfor %}
+							</li>
+						</div>
+					<div class="tab-pane fade in active" id="ability">
+					<div id="chart" style="width:550px;height:400px; margin-top:20px;"></div>
+						<div id="rank_chart" style="width:550px;height:400px; margin-top:20px;"></div>
+
+				</div>
+					<div class="tab-pane fade" id="repos">
+    				<table id="examples" class="display" style="width:100%;">
+        <thead >
+            <tr>
+				<th style="text-align: center;">项目名</th>
+                <th style="text-align: center;">项目介绍</th>
+                <th style="text-align: center;">语言</th>
+                <th style="text-align: center;">forks</th>
+                <th style="text-align: center;">关注数</th>
+				<th style="text-align: center;">更新时间</th>
+                <th style="text-align: center;">项目地址</th>
+            </tr>
+        </thead>
+        <tbody>
+{% if data.item_list %}
+{% for message in data.item_list %}
+      <tr>
+				<th style="text-align: center;">
+				{{ message.item_name }}
+				</th>
+               <th style="text-align: center;">{{ message.description }}</th>
+                <th style="text-align: center;">{{ message.language }}</th>
+
+                <th style="text-align: center;">{{ message.forks_count }}</th>
+                <th style="text-align: center;">{{ message.watchers_count }}</th>
+				<th style="text-align: center;">{{ message.updated_time}}</th>
+                <th style="text-align: center;"><a href="https://github.com/{{message.full_name}}">source</a></th>
+            </tr>
+	{% endfor %}
+							{% else %}
+	<tr>
+                        <th >无数据</th>
+
+                   			 	</tr>
+                			{% endif %}
+
+
+        </tbody>
+    </table>
+
+    
+				</div>
+					<div class="tab-pane fade" id="languages">
+						<div class="languages"><a class="z2">开发语言：</a>
+							<br />
+							<br />
+							<div class="z3">{% for post in data.tag_user %}
+						{% for key, value in post.code_infor.language.items %}
+							{{key}}:     &nbsp&nbsp{{value}}
+								<br />
+							{% endfor %}
+					{% endfor %}</div></div>
+						<br />
+					<div class="good_languages"><a class="z2">擅长语言：</a>
+							<br />
+							<br />
+							<div class="z3">{% for post in data.tag_user %}
+								{{post.good_languages.0}}<br />
+									项目数量：	&nbsp&nbsp{{post.good_languages.1.0}}<br/>
+									语言影响力：	&nbsp&nbsp{{post.good_languages.1.1}}<br/>
+									总项目长度：	&nbsp&nbsp{{post.good_languages.1.2}}<br/>
+					{% endfor %}</div></div>
+				</div>
+				</div>
+		</div>
+
+
+        </div>
+        <div class="col-md-4" >
+        		<div class="content2-right" style="background-color: #f5f5f5;padding: 20px;margin-left:10px;height:750px;">
+			<div style="font-size:20px;font-weight: 700;color: #337ab7;"><img class="gx_wl" src="../static/png/gxwl.png" />云标签</div>
+			<div id="tagcloud" style="width: 100%; height: 250px; align-self: center;">
+			</div>
+			<div style="font-size:20px;font-weight: 700;color: #337ab7;"><img class="gx_wl" src="../static/png/gxwl.png" />合作者</div>
+			<div  style="width:100%;height:400px;padding-top:20px;" id="gx"></div>
+		</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+     $(document).ready(function() {
+        $('#examples').DataTable();
+    } );
+ </script>
+		<script type="text/javascript">
+        	var myChart = echarts.init(document.getElementById('chart'));
+    		var options={
+				title:{text:'能力图'},
+        		tooltip:{
+        			show:true,
+        			trigger: 'axis'
+        		},
+			 legend: {
+        orient : 'vertical',
+        x : 'right',
+        y : 'bottom',
+        data:['能力值']
+    },
+     toolbox: {
+        show : true,
+    },
+     polar : [
+       {
+           indicator : [
+               { text: '贡献度', max: 1},
+               { text: '影响力', max: 1},
+               { text: '活跃度', max: 1},
+               { text: '项目经验', max: 1},
+               { text: '语言能力', max: 1}
+            ]
+        }
+    ],
+
+      series : [
+        {
+            name: '能力值',
+            type: 'radar',
+          data:[{
+          value:[{% for post in data.analyze_list %}
+							{{post.commit}}
+						{% endfor %},
+						{% for post in data.analyze_list %}
+							{{post.follower}}
+						{% endfor %},{% for post in data.analyze_list %}
+							{{post.issue}}
+						{% endfor %},{% for post in data.analyze_list %}
+							{{post.repos}}
+						{% endfor %},{% for post in data.analyze_list %}
+							{{post.languages}}
+						{% endfor %}],
+						name:'能力值'}]
+        }
+    ]
+
+			};
+    		myChart.setOption(options);
+          </script>
+		<script type="text/javascript">
+        	var myChart = echarts.init(document.getElementById('rank_chart'));
+    		var options={
+        	//定义一个标题
+				title:{text:'能力排行图'},
+        		tooltip:{
+        			show:true
+        		},
+
+        	//X轴设置
+        		xAxis:{
+            		data:['贡献度','影响力','活跃度','项目经验','语言能力']
+        		},
+        		yAxis:{
+        		},
+        	//name=legend.data的时候才能显示图例
+        		series:[{
+            		type:'line',
+            		data:[	{% for post in data.rank_list %}
+						{{post.commit_rank}}
+					{% endfor %},
+						{% for post in data.rank_list %}
+						{{post.follow_rank}}
+					{% endfor %},	{% for post in data.rank_list %}
+						{{post.issue_rank}}
+					{% endfor %},{% for post in data.rank_list %}
+							{{post.repos_rank}}
+						{% endfor %},{% for post in data.rank_list %}
+							{{post.languages_rank}}
+						{% endfor %}],
+            		itemStyle: {
+							normal: {
+								label: {
+									show: true,
+									position: 'top',
+									textStyle: {
+										color: 'black',
+										fontSize: 16
+									}
+								}
+							}
+						},
+        		}]
+			};
+    		myChart.setOption(options);
+          </script>
+		<script type="text/javascript">
+			var words= [];
+			{% for tag in data.tag_user %}
+				{% for a in tag.lable.0 %}
+					words.push({text:"{{a}}",weight:5});
+				{% endfor %}
+				{% for a in tag.lable.1 %}
+					{% if a not in tag.lable.0%}
+						words.push({text:"{{a}}",weight:4});
+					{% endif %}
+				{% endfor %}
+				{% for a in tag.lable.2 %}
+					{% if a not in tag.lable.0%}
+						words.push({text:"{{a}}",weight:3});
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+			$(function() {
+   			 $("#tagcloud").jQCloud(words);
+  			});
+
+</script>
+		<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('gx'));
+    var nodes1=[];
+				{% for tag in data.tag_user %}
+					nodes1.push({category:0, name: "{{tag.user}}", value : 10, label: '{{tag.user}}（主要）'});
+					{% for a in tag.friends %}
+						nodes1.push({category:1, name: "{{a.1}}",value : 5});
+					{% endfor %}
+				{% endfor %}
+	var links1=[];
+            	{% for tag in data.tag_user %}
+					{% for a in tag.friends %}
+						links1.push({source : "{{a.1}}", target : "{{tag.user}}", weight : "{{a.0}}", name: "{{a.0}}"},);
+					{% endfor %}
+				{% endfor %}
+    option = {
+        title : {
+        {% for tag in data.tag_user %}
+					text: '人物关系：{{tag.user}}',
+				{% endfor %}
+            subtext: '数据来自Github',
+            x:'right',
+            y:'bottom'
+        },
+        tooltip : {
+            trigger: "axis",
+            trigger: 'item',
+            formatter: '{a} : {b}'
+
+        },
+        toolbox: {
+            show : true,
+        },
+        legend: {
+            x: 'left',
+            data:['人物','合作者']
+        },
+        series : [
+            {
+                type:'force',
+                name : "issue次数",
+                ribbonType: false,
+                categories : [
+                    {
+                        name: '人物'
+                    },
+                    {
+                        name: '合作者'
+                    }
+
+                ],
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: true,
+                            textStyle: {
+                                color: '#333'
+                            }
+                        },
+                        nodeStyle : {
+                            brushType : 'both',
+                            borderColor : 'rgba(255,215,0,0.4)',
+                            borderWidth : 1
+                        },
+                        linkStyle: {
+                            type: 'curve'
+                        }
+                    },
+                    emphasis: {
+                        label: {
+                            show: false
+                        },
+                        nodeStyle : {
+                            //r: 30
+                        },
+                        linkStyle : {}
+                    }
+                },
+                useWorker: false,
+                minRadius : 15,
+                maxRadius : 25,
+                gravity: 1.1,
+                scaling: 1.1,
+                roam: 'move',
+				nodes : nodes1,
+				links:links1
+            }
+        ]
+    };
+    function focus(param) {
+        var data = param.data;
+        var links = option.series[0].links;
+        var nodes = option.series[0].nodes;
+        if (
+            data.source !== undefined
+            && data.target !== undefined
+        ) { //点击的是边
+            var sourceNode = nodes.filter(function (n) {return n.name == data.source})[0];
+            var targetNode = nodes.filter(function (n) {return n.name == data.target})[0];
+            console.log("选中了边 " + sourceNode.name + ' -> ' + targetNode.name + ' (' + data.weight + ')');
+        } else { // 点击的是点
+            console.log("选中了" + data.name + '(' + data.value + ')');
+        }
+    }
+    myChart.on( echarts.config.EVENT.CLICK, focus);
+
+    myChart.on( echarts.config.EVENT.FORCE_LAYOUT_END, function () {
+        console.log(myChart.chart.force.getPosition());
+    });
+
+    myChart.setOption(option);
+</script>
+{% endblock %}

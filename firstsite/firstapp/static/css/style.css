@@ -1,0 +1,270 @@
+* {font-family:"微软雅黑"}
+ul li{list-style:none;margin:0px;}
+a{ text-decoration:none; color:#333333;}
+img{border:none;}
+html,body{
+    margin:0px;
+    padding:0px;
+    height:100%;
+}
+.logol{
+    padding-left:250px;
+    padding-top:11px;
+    float:left;
+ }
+ .namel{
+    padding-top:8px;
+    padding-left:10px;
+    float:left;
+ }
+
+.navl li{
+    float:left;
+    margin-right:20px;
+    height:80px;
+    line-height:80px;
+ }
+.navl a{
+    display:block;
+    padding:0 25px;
+    font-size:35px;
+ }
+.first a:hover{background-color:#f7f7f7; border-left:1px solid #dcdcdc; border-right:1px solid #dcdcdc;}
+.rank a:hover{background-color:#f7f7f7; border-left:1px solid #dcdcdc; border-right:1px solid #dcdcdc;}
+.recom a:hover{background-color:#f7f7f7; border-left:1px solid #dcdcdc; border-right:1px solid #dcdcdc;}
+.about a:hover{background-color:#f7f7f7; border-left:1px solid #dcdcdc; border-right:1px solid #dcdcdc;}
+.content{
+    height:690px;
+}
+.content1{
+    height:463px;
+}
+.contents{
+    min-height:100%;
+    margin-bottom: -40px;
+}
+.content2{
+   height: 1000px;
+}
+.container2, .push{
+    height:50px;
+}
+footer {
+	padding: 20px;
+	text-align: center;
+	background-color: #e7e7e7;
+	border: 1px solid #c0c0c0;
+	font-size: 12px;
+	color: #222222;
+}
+.top{
+	text-align: center;
+    margin-top: 150px;
+    margin-left: 400px;
+    height:50px;
+    width:800px;
+    font-size:40px;
+    color: #DC143C;
+}
+
+.form-inlinel {
+	padding-left: 200px;
+	padding-top: 70px;
+}
+.form-controll {
+	background: #ffffff;
+	height: 46px;
+	padding-right: 20px;
+	margin-left:150px;
+	border-color: #acacac;
+	color: dark;
+	font-size:20px;
+	float:left;
+}
+.form-groupl{
+    background: #ffffff;
+	height: 46px;
+	width: 870px;
+	border-color: #acacac;
+	color: dark;
+	font-size:20px;
+	float:left;
+}
+.form-control1 {
+	background: #ffffff;
+	height: 46px;
+	padding-right: 20px;
+	border-color: #acacac;
+	color: dark;
+	font-size:20px;
+	float:left;
+	margin-left:5px;
+}
+.searchl{
+    float:left;
+    margin-top:5px;
+    padding-top:8px;
+    height:25px;
+    width:25px;
+}
+
+.author_intro{
+    margin-top: 50px;
+    width:"100%";
+    height:200px;
+ }
+.person_imagel{
+    height:120px;
+    width:120px;
+    margin-top:40px;
+    margin-left: 150px;
+    float:left;
+}
+.person_basel{
+    height:200px;
+    width:800px;
+    float:left;
+}
+.name1l{
+    height: 30px;
+    width: 80px;
+     margin-top:30px;
+}
+.name3l{
+      font-size:15px;  color: #999;
+}
+.loginl{
+    height: 30px;
+    width: 100px;
+     padding-top:10px;
+}
+.login2l{
+      font-size:15px;  color: #999;
+}
+.locationl{
+    height: 30px;
+    width: 80px;
+     padding-top:15px;
+}
+.location2l{
+      font-size:15px;  color: #999;
+}
+.name2l{
+     height: 30px;
+    width: 200px;
+    font-size:20px;
+     text-align: center;
+}
+.location1l{
+     height: 30px;
+    width: 250px;
+    font-size:20px;
+     text-align: center;
+}
+.login1l{
+     height: 30px;
+    width: 200px;
+    font-size:20px;
+     text-align: center;
+}
+.content2-left{
+    width:800px;
+     float:left;
+}
+.content2-right{
+    width:400px;
+    float:left;
+}
+.info{
+    font-size:20px;
+}
+.abili{
+    font-size:20px;
+}
+.repo_info{
+    font-size:20px;
+}
+.repos{
+    font-size:20px;
+}
+.lan{
+    font-size:20px;
+}
+.n1{
+    list-style:none;margin:0px;
+ }
+ .n2{
+    font-size:20px;
+ }
+ .n3{
+     font-size:20px;
+ }
+ .z1{
+    list-style:none;margin-top:5px;
+ }
+  .z2{
+    font-size:20px;
+ }
+ .z3{
+     font-size:20px;
+ }
+ .c1{
+    list-style:none;margin-top:5px;
+ }
+  .c2{
+    font-size:20px;
+ }
+ .c3{
+     font-size:20px;
+ }
+ .o1{
+    list-style:none;margin-top:5px;
+ }
+  .o2{
+    font-size:20px;
+ }
+ .o3{
+     font-size:20px;
+ }
+ .t1{
+    list-style:none;margin-top:5px;
+ }
+  .t2{
+    font-size:20px;
+ }
+ .t3{
+     font-size:20px;
+ }
+.d1{
+    list-style:none;margin-top:5px;
+ }
+ .d2{
+    font-size:20px;
+ }
+ .d3{
+     font-size:20px;
+     font-color:dark;
+ }
+ .score1{
+    list-style:none;margin-top:5px;  font-size:20px;
+ }
+
+ .score{
+    font-size:20px;
+ }
+#pagination a{
+		border: 1px solid #000000;
+		width: 50px;
+		height:20px;
+		float: left;
+		margin-left: 10px;cursor: pointer;
+	}
+.languages{
+ list-style:none;
+}
+.gx_wl {
+    width: 30px;
+    height: 30px;
+
+    }
+
